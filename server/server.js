@@ -12,8 +12,8 @@ var pkg = require('../package.json');
 var env = process.argv[2] || process.env.NODE_ENV;
 var debug = 'production' !== env;
 var viewDir = debug ? 'src' : 'assert';
-var rootDir = path.resolve(__dirname, '../');
-var staticDir = path.resolve(__dirname, '../'+(debug ? 'src' : 'assert'));
+var rootDir = path.join(__dirname, '../');
+var staticDir = path.join(__dirname, '../'+(debug ? 'src' : 'assert'));
 
 colors.setTheme({
     silly: 'rainbow',
@@ -59,4 +59,3 @@ server.listen(process.env.PORT || 8080, function() {
 	var url = util.format('http://%s:%d', 'localhost', pkg.localServer.port);
 	console.log('Listening at %s', url);
 })
-

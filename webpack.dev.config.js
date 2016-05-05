@@ -4,7 +4,6 @@
  */
 var webpack = require('webpack');
 var path = require('path');
-var pkg = require('./package.json')
 
 module.exports = {
     entry: [

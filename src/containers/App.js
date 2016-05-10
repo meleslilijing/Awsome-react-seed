@@ -21,7 +21,7 @@ class App extends Component {
 		const links = [
 			{ pathname: '/', display: '/'},
 			{ pathname: '/foo', display: '/foo'},
-			{ pathname: '/foo/bar', query: { hehe: 'haha' }, display: '/bar?hehe=haha'}
+			{ pathname: '/bar', display: '/bar'}
 		]
 
 		return (
@@ -50,5 +50,5 @@ function mapStateToProps(state) {
 		bar: state.bar
 	}
 }
-console
+
 export default connect(mapStateToProps)(App)

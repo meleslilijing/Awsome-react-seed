@@ -1,0 +1,3 @@
+https://github.com/gaearon/redux-devtools#features
+https://github.com/gaearon/redux-devtools-log-monitor
+https://github.com/gaearon/redux-devtools-dock-monitor

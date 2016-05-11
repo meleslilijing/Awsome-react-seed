@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import { routerStateReducer } from 'redux-router'
 
+// initState
 const initTodoState = {
 	testTodoInit: "test-foo-init"
 }

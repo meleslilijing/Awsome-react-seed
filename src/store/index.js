@@ -9,7 +9,10 @@ import { createHistory } from 'history'
 
 const enhancer = compose(
 	// applyMiddleware()
-	reduxReactRouter(createHistory), 
+	reduxReactRouter({
+		// routes,
+		createHistory
+	}), 
 	DevTools.instrument()
 )
 

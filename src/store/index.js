@@ -22,5 +22,6 @@ const configureStore = function(initialState) {
 }
 
 const Store = configureStore()
+window['Store'] = Store;
 
 export default Store

@@ -1,26 +1,25 @@
-/**
- * product weebpack config file
- */
-
-var webpack = require('webpack');
 var path = require('path');
 
+var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
-var SOURCE_PATH = path.resolve(__dirname, 'src');
-var BUILD_PATH = path.resolve(__dirname, 'assert');
+var pkg = require('./package.json');
+var name = pkg.name;
 
 module.exports = {
     entry: {
-        index: path.resolve(SOURCE_PATH, 'index.js'),
+        main_home: './src/index.js',
         vendors: ['react', 'react-dom']
     },
     output: {
-        filename: 'bundle.[hash:8].js',
-        publicPath: 'views/promotion/assert/',
-        path: BUILD_PATH
+        path: './dist',
+        filename: name + '.[hash:8].js',
+        publicPath: 'https://sec-boss.static.xiaomi.net/' + name
     },
     devtools: 'eval-source-map',
+    resolve: {
+        extensions: ['', '.js', '.jsx'],
+    },
     module: {
         loaders: [
             {
@@ -29,7 +28,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpe?g|gif|svg)$/,
-                loader: 'url?limit=250000&name=img/[hash:8].[name].[ext]'
+                loader: 'url?limit=10240&name=img/[hash:8].[name].[ext]'
             },
             {
                 test: /\.(js|jsx)$/,
@@ -43,10 +42,10 @@ module.exports = {
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
-        // new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
+        new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
         new HtmlWebpackPlugin({
-            // template: 'src/indexTpl.html',
-            filename: '../index.html'
+            filename: '../html/index.html',
+            template: './template/index.html'
         })
     ]
 };

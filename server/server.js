@@ -11,9 +11,8 @@ var colors = require('colors');
 var pkg = require('../package.json');
 var env = process.argv[2] || process.env.NODE_ENV;
 var debug = 'production' !== env;
-var viewDir = debug ? 'src' : 'assert';
 var rootDir = path.join(__dirname, '../');
-var staticDir = path.join(__dirname, '../'+(debug ? 'src' : 'assert'));
+var staticDir = path.join(rootDir, debug ? 'src' : 'dist');
 
 colors.setTheme({
     silly: 'rainbow',
@@ -35,6 +34,7 @@ var devMiddleware = require('webpack-dev-middleware');
 var hotMiddleware  = require("webpack-hot-middleware");
 
 var app = express();
+var routes = require('./routes');
 
 // logger
 app.use(require('morgan')('short'));
@@ -51,8 +51,14 @@ app.use(hotMiddleware(compiler, {
 }))
 
 app.get('/', function(req, res) {
-	res.sendFile(staticDir + '/index.html');
+	res.sendFile(path.join(staticDir, 'index.html'));
 })
+
+app.get('/explan', function(req, res) {
+    res.sendFile(path.join(rootDir, 'html/explan.html'));
+})
+
+app.use('/', routes)
 
 var server = http.createServer(app);
 server.listen(process.env.PORT || 8080, function() {

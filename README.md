@@ -1,10 +1,7 @@
 # Awesome react seed
-## Single Page Application in react
-### keywords: react redux react-redux react-router redux-router
 
-####TODO:
-
-- add redux-devtools
+Single Page Application in react  
+keywords: react redux react-redux react-router redux-router
 
 ####本地开发环境
 	npm run dev
@@ -15,7 +12,7 @@
 ####构建工具
 - webpack
 - babel
-- babel-preset-es2015		for support es6	
+- babel-preset-es2015		support es6	
 - babel-polyfill			src/index.js入口文件内引用, 兼容部分浏览器不支持es6特性。
 
 ####dev server:
@@ -29,6 +26,9 @@
 - react-redux
 - react-router
 - redux-router
+- redux-devtools
+- redux-devtools-dock-monitor
+- redux-devtools-log-monitor
 
 ####Store放在全局变量(window)里 => 
 1. 全局可触发action
@@ -85,7 +85,9 @@
 	|-- /server					本地开发服务
 	|-- /mock
 	|-- /src 					未编译前端代码
-	|-- /assert					上线前端代码
+	|-- /dist					上线前端代码
+	|-- /template 				html模板
+	|-- /html 					上线html文件
 
 	|-- index.html 				编译后页面, 可能存在多个
 	|-- package.json
@@ -100,13 +102,12 @@ src内部文件结构
 	|- /css
 	|- /scss
 	|- /image
-	|- /js
-		|- /actions
-		|- /components
-		|- /constants			静态常量存储，如pageType等
-		|- /containers			top components/page
-		|- /global				全局func, object
-		|- /reducer
-		|- /store
+	|- /actions
+	|- /components
+	|- /constants			静态常量存储，如pageType等
+	|- /containers			top components/page
+	|- /global				全局func, object
+	|- /reducer
+	|- /store
 	|- index.html 				未编译页面和js入口文件。可能存在多个
 	|- index.js 				

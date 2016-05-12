@@ -1,7 +1,3 @@
-/**
- * DEV
- * hot loader loader
- */
 var webpack = require('webpack');
 var path = require('path');
 
@@ -12,7 +8,6 @@ module.exports = {
     ],
     output: {
         path: __dirname,
-        // path: path.join(__dirname, '/src/'),
         filename: 'bundle.js',
         publicPath: '/',
     },
@@ -23,8 +18,8 @@ module.exports = {
                 loader: 'style-loader!css-loader'
             },
             {
-                test: /\.(png|jpg)$/,
-                loader: 'url?limit=250000'
+                test: /\.(png|jpg|jpeg|gif)$/,
+                loader: "url-loader?limit=10240"
             },
             {
                 test: /\.(js|jsx)$/,

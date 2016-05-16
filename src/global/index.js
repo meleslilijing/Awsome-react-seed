@@ -1,1 +1,4 @@
-var String = require('./String');
+require('./String');
+
+require('../actions')
+

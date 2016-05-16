@@ -1,3 +1,5 @@
-String.isString = String.isString || function(str) {
-	return (typeof str === 'string')
-}
+;(function() {
+	String.isString = String.isString || function(str) {
+		return (typeof str === 'string')
+	}	
+})()

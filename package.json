@@ -20,7 +20,6 @@
     "url": "https://github.com/meleslilijing/Awsome-react-seed/issues"
   },
   "homepage": "https://github.com/meleslilijing/Awsome-react-seed#readme",
-  "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.8.0",
     "babel-loader": "^6.2.4",
@@ -47,7 +46,6 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.6.1",
-    "webpack-dev-server": "^1.14.1",
     "webpack-hot-middleware": "^2.10.0"
   }
 }

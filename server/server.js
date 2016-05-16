@@ -29,7 +29,8 @@ colors.setTheme({
 
 var webpack = require('webpack');
 var webpackCfg = require('../webpack.dev.config.js');
-var compiler = webpack(webpackCfg)
+var compiler = webpack(webpackCfg);
+
 var devMiddleware = require('webpack-dev-middleware');
 var hotMiddleware  = require("webpack-hot-middleware");
 
@@ -41,7 +42,8 @@ app.use(require('morgan')('short'));
 
 app.use(devMiddleware(compiler, {
 	noInfo: true, 
-	publicPath: webpackCfg.output.publicPath
+	publicPath: webpackCfg.output.publicPath,
+    historyApiFallback: true
 }))
 
 app.use(hotMiddleware(compiler, {
@@ -50,18 +52,23 @@ app.use(hotMiddleware(compiler, {
 	heartbeat: 10 * 1000
 }))
 
-app.get('/', function(req, res) {
-	res.sendFile(path.join(staticDir, 'index.html'));
-})
-
 app.get('/explan', function(req, res) {
     res.sendFile(path.join(rootDir, 'html/explan.html'));
 })
 
 app.use('/', routes)
 
+app.get('/*', function(req, res) {
+	res.sendFile(path.join(staticDir, 'index.html'));
+})
+
 var server = http.createServer(app);
-server.listen(process.env.PORT || 8080, function() {
+server.listen(process.env.PORT || 8080, function(err) {
+    if(err) {
+        console.log(err);
+        return ;
+    }
+
 	var url = util.format('http://%s:%d', 'localhost', pkg.localServer.port);
 	console.log('Listening at %s', url);
 })

@@ -3,6 +3,7 @@ var path = require('path');
 
 module.exports = {
     entry: [
+        // necessary for hot reloading with IE:
         'webpack-hot-middleware/client?reload=true&timeout=20000&quiet=true',
         './src/index.js'
     ],
@@ -11,6 +12,7 @@ module.exports = {
         filename: 'bundle.js',
         publicPath: '/',
     },
+    devtool: 'cheap-module-eval-source-map',
     module: {
         loaders: [
             {
@@ -24,19 +26,17 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                loader: 'babel',
-                query: {
-                    presets: ['es2015', 'react']
-                }
+                loader: 'babel'
             }
         ]
     },
     plugins: [
-    	new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         new webpack.DefinePlugin({  // inject node variable
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+            'process.env': {
+                'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+            }
         })
     ]
 };
